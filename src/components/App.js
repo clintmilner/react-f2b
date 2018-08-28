@@ -7,9 +7,9 @@ export default class App extends React.Component {
 
     render(){
         return (
-            <div>
+            <React.Fragment>
                 <h1>My React App</h1>
-            </div>
+            </React.Fragment>
         );
     }
 }
