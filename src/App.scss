@@ -1,0 +1,16 @@
+body {
+    background: antiquewhite;
+}
+
+.fas {
+    cursor: pointer;
+}
+
+.fa-sort {
+    &-down {
+        margin-top: -3px;
+    }
+    &-up {
+        margin-top: 6px;
+    }
+}
