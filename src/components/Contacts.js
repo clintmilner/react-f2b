@@ -1,39 +1,27 @@
 import React from 'react';
 import Contact from './Contact';
+import { Consumer } from '../context';
 
 export default class Contacts extends React.Component{
     constructor(props){
         super(props);
-        this.handleDeleteContact = this.handleDeleteContact.bind(this);
-
-        this.state = {
-            users: []
-        };
-
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then((blob) => (blob.json()))
-            .then((users) => { this.setState(() => ({users})); });
-    }
-
-    handleDeleteContact({props}){
-        this.setState((prevState) => {
-            return {
-                users: prevState.users.filter( (user) => {
-                    return user.id !== props.id;
-                })
-            }
-        });
     }
 
     render(){
-        return(
-            <React.Fragment>
-                {
-                    this.state.users.map( (user) => {
-                        return <Contact key={user.id} {...user} handleDeleteContact={this.handleDeleteContact} />
-                    })
-                }
-            </React.Fragment>
-        );
+        return (
+            <Consumer>
+                {value => {
+                    return(
+                        <React.Fragment>
+                            {
+                                value.users.map( (user) => {
+                                    return <Contact key={user.id} {...user} />
+                                })
+                            }
+                        </React.Fragment>
+                    )
+                }}
+            </Consumer>
+        )
     }
 }
