@@ -1,5 +1,5 @@
 import React from 'react';
-import { Consumer } from '../context';
+import { Consumer } from '../../context';
 
 export default class Contact extends React.Component {
     constructor(props) {
@@ -14,6 +14,7 @@ export default class Contact extends React.Component {
     handleToggle() {
         this.setState((prevState) => ({ showContactInfo: !prevState.showContactInfo }));
     }
+
     handleDeleteContact(dispatch) {
         dispatch({ type: 'DELETE_USER', payload: this.props.id });
     }
@@ -26,7 +27,12 @@ export default class Contact extends React.Component {
                     return (
                         <div className="card card-body mb-3 clearfix">
                             <h4>
-                                {this.props.name.title} {this.props.name.first} {this.props.name.last}
+                                {
+                                    (typeof this.props.name === 'string')
+                                        ? this.props.name
+                                        : `${this.props.name.title} ${this.props.name.first} ${this.props.name.last}`
+                                }
+
                                 <div className="btn-group btn-group-sm float-right">
                                     <i onClick={this.handleToggle}
                                         className={`fas fa-fw fa-sort-${(this.state.showContactInfo) ? 'up' : 'down'}`}></i>
@@ -40,7 +46,6 @@ export default class Contact extends React.Component {
                                     ? <ul className='list-group'>
                                         <li className='list-group-item'>Email: {this.props.email}</li>
                                         <li className='list-group-item'>Phone: {this.props.phone}</li>
-                                        <li className='list-group-item'>Cell: {this.props.cell}</li>
                                         <li className='list-group-item'><img src={this.props.picture.large} width='100%' height='auto' /></li>
                                     </ul>
                                     : ''

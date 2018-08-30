@@ -3,6 +3,7 @@ import React from 'react';
 const Context = React.createContext(),
 
     reducer = (prevState, { type, payload }) => {
+        console.log('reducer called', type, payload, prevState);
         switch(type) {
             case 'DELETE_USER':
                 return {
@@ -10,6 +11,11 @@ const Context = React.createContext(),
                     users: prevState.users.filter((user) => {
                         return user.id !== payload;
                     })
+                };
+            case 'ADD_USER':
+                return {
+                    ...prevState,
+                    users: [payload, ...prevState.users]
                 };
             default:
                 return prevState;
