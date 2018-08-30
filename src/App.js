@@ -6,14 +6,12 @@ import { Provider } from './context';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
-
 export default class App extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-
     }
 
-    render(){
+    render() {
         return (
             <Provider>
                 <React.Fragment>
