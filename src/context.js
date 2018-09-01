@@ -3,7 +3,7 @@ import React from 'react';
 const Context = React.createContext(),
 
     reducer = (prevState, { type, payload }) => {
-        console.log('reducer called', type, payload, prevState);
+        // console.log('reducer called', type, payload, prevState);
         switch(type) {
             case 'DELETE_USER':
                 return {

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -14,9 +15,19 @@ export default class Header extends React.Component {
                     </a>
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <a href="/" className="nav-link">
-                                Home
-                            </a>
+                            <Link to="/" className="nav-link">
+                                <i className="fas fa-fw fa-home"></i> Home
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/about" className="nav-link">
+                                <i className="fas fa-fw fa-question"></i> About
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/contact/add" className="nav-link">
+                                <i className="fas fa-fw fa-plus"></i> Add
+                            </Link>
                         </li>
                     </ul>
                 </div>

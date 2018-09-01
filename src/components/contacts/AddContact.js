@@ -10,7 +10,7 @@ export default class AddContact extends React.Component {
         this.handleInputOnChange = this.handleInputOnChange.bind(this);
 
         this.state = {
-            name: '',
+            name: (this.props.match.params.firstname) ? this.props.match.params.firstname : '',
             email: '',
             phone: '',
             picture: { large: '' },
@@ -60,6 +60,8 @@ export default class AddContact extends React.Component {
                 }
             );
         });
+
+        this.props.history.push('/'); // Redirect to home page using BrowserRouter
     }
 
     handleInputOnChange(e) {
