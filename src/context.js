@@ -2,7 +2,7 @@ import React from 'react';
 
 const Context = React.createContext(),
 
-    reducer = (prevState, { type, payload }) => {
+    reducer = (prevState, {type, payload}) => {
         // console.log('reducer called', type, payload, prevState);
         switch(type) {
             case 'DELETE_USER':
@@ -35,10 +35,14 @@ export class Provider extends React.Component {
                 });
             }
         };
+    }
 
+    componentDidMount() {
         fetch('https://randomuser.me/api/?results=10')
             .then((blob) => (blob.json()))
-            .then(({ results }) => { this.setState(() => ({ users: results })); });
+            .then(({results}) => {
+                this.setState(() => ({users: results}));
+            });
     }
 
     render() {
