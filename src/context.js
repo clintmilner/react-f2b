@@ -23,6 +23,7 @@ const Context = React.createContext(),
     };
 
 export const Consumer = Context.Consumer;
+
 export class Provider extends React.Component {
     constructor(props) {
         super(props);
